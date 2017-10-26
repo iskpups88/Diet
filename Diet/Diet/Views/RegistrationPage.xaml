@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diet.Views.RegistrationPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyleSex" TargetType="Label" BasedOn="{StaticResource Key=labelStyle}">
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            <x:Array x:Key="sex" Type="{x:Type x:String}">
+                <x:String>Male</x:String>
+                <x:String>Female</x:String>
+            </x:Array>
+            <Style x:Key="listViewStyle" TargetType="ListView">
+               
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="SeparatorColor" Value="#fff" />
+                <Setter Property="BackgroundColor" Value="#fff" />
+                <Setter Property="Margin" Value="0,15,0,-10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="220">
+            <Entry Placeholder="Username" Text="{Binding UserName}" Style="{StaticResource entryStyle}"></Entry>
+            <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" Style="{StaticResource entryStyle}"></Entry>
+            <Entry Placeholder="Password confirmation" IsPassword="True" Text="{Binding PasswordConfirmation}" WidthRequest="250" Style="{StaticResource entryStyle}"></Entry>
+            <StackLayout Orientation="Horizontal" >
+                <!--<Label Text="Are you male?" Style="{StaticResource labelStyleSex}"></Label>
+                <Switch IsToggled="{Binding Sex}"></Switch>-->
+                <ListView x:Name="sexList" ItemsSource="{StaticResource Key=sex}" Style="{StaticResource listViewStyle}">
+                   
+                </ListView>
+            </StackLayout>
+
+            <Entry Placeholder="Age" Text="{Binding Age}" Style="{StaticResource entryStyle}"></Entry>
+            <Entry Placeholder="Weight" Text="{Binding Weight}" Style="{StaticResource entryStyle}"></Entry>
+            <!--<Entry Placeholder="Height" Text="{Binding Height}" Style="{StaticResource entryStyle}"></Entry>-->
+            <Button Text="Registration" Command="{Binding DoRegistration}" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyleReg}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

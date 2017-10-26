@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Diet.Util;
+using Diet.ViewModels;
 using Xamarin.Forms;
+using INavigation = Xamarin.Forms.INavigation;
 
 namespace Diet
 {
@@ -11,9 +13,13 @@ namespace Diet
     {
         public App()
         {
+            
             InitializeComponent();
+            
+            var page = new Diet.MainPage();
+            MainPage = new NavigationPage(page);
 
-            MainPage = new Diet.MainPage();
+            
         }
 
         protected override void OnStart()
@@ -30,5 +36,7 @@ namespace Diet
         {
             // Handle when your app resumes
         }
+
+     
     }
 }

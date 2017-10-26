@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Diet"
+             x:Class="Diet.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="titleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="0, 100, 0, 0"/>
+            </Style>
+            <Style x:Key="buttonStyleLogin" TargetType="Button" BasedOn="{StaticResource Key=baseButtonStyle}">
+                <Setter Property="BackgroundColor" Value="#F48300" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" WidthRequest="220">
+        <Entry Placeholder="Ilvir Pidr" Text="{Binding Login}" Style="{StaticResource entryStyle}"></Entry>
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Style="{StaticResource entryStyle}"></Entry>
+        <Button Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyleLogin}"></Button>
+        <Label Text="Don't have an account?" Style="{StaticResource labelStyle}"></Label>
+        <Button Text="Registration" Command="{Binding GetRegistration}" Style="{StaticResource buttonStyleReg}"></Button>
+    </StackLayout>
+
+</ContentPage>
