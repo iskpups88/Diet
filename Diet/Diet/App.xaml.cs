@@ -15,7 +15,6 @@ namespace Diet
         {
             
             InitializeComponent();
-            
             var page = new Diet.MainPage();
             MainPage = new NavigationPage(page);
 
