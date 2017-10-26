@@ -46,21 +46,11 @@ namespace Diet.Models
             }
         }
 
-        public bool checkUser(string login, string password)
+        public int checkUser(string login, string password)
         {
-            bool check = true;
             IEnumerable<User> users = GetItems();
-            foreach (var item in users)
-            {
-                if (item.UserName == login & item.Password == password)
-                {
-                    check = true;
-                    break;
-                }
-                else
-                    check = false;
-            }
-            return check;
+            int i = users.Where(t => t.UserName == login & t.Password == password).Count();
+            return i;
         }
     }
 }
