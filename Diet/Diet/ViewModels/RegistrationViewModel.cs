@@ -135,8 +135,10 @@ namespace Diet.ViewModels
 
             if (isEnabled == true)
             {
-                UserRepo.SaveItem(User);
-                await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
+                if(UserRepo.addUser(User) == true)
+                    await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
+                else
+                    await Application.Current.MainPage.DisplayAlert("Failed", "User wasn't added", "ok");
             }
         }
 

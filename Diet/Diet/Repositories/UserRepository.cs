@@ -33,6 +33,7 @@ namespace Diet.Models
         {
             return database.Delete<User>(id);
         }
+
         public int SaveItem(User item)
         {
             if (item.Id != 0)
@@ -46,21 +47,26 @@ namespace Diet.Models
             }
         }
 
-        public bool checkUser(string login, string password)
+        public int checkUser(string login, string password)
         {
-            bool check = true;
             IEnumerable<User> users = GetItems();
-            foreach (var item in users)
+            int i = users.Where(t => t.UserName == login & t.Password == password).Count();
+            return i;
+        }
+
+
+
+        public bool addUser(User item)
+        {
+            bool added = true;
+            if (checkUser(item.UserName, item.Password) == 0)
             {
-                if (item.UserName == login & item.Password == password)
-                {
-                    check = true;
-                    break;
-                }
-                else
-                    check = false;
+                database.Insert(item);
+                added = true;
             }
-            return check;
+            else
+                added = false;
+            return added;
         }
     }
 }

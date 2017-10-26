@@ -81,7 +81,7 @@ namespace Diet.ViewModels
 
         public void Auth()
         {            
-            if (isEnabled == true & UserRepo.checkUser(login, password))
+            if (isEnabled == true & UserRepo.checkUser(login,password) == 1)
                 Application.Current.MainPage.DisplayAlert("Succes", "You logged", "ok");
             else
                 Application.Current.MainPage.DisplayAlert("Fail", "Check login or password", "ok");
