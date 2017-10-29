@@ -12,7 +12,7 @@ namespace Diet.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [Column ("UserName")]
+        [Column("UserName"),Unique]
         public string UserName { get; set; } = string.Empty;
         [Column("Password")]
         public string Password { get; set; } = string.Empty;

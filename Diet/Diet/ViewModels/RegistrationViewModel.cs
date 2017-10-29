@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Diet.Models;
 using Xamarin.Forms;
+using System;
 
 namespace Diet.ViewModels
 {
@@ -86,7 +87,6 @@ namespace Diet.ViewModels
                 }
             }
         }
-
     
         public bool Sex
         {
@@ -135,10 +135,15 @@ namespace Diet.ViewModels
 
             if (isEnabled == true)
             {
-                if(UserRepo.addUser(User) == true)
+                try
+                {
+                    UserRepo.AddUser(User);
                     await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
-                else
-                    await Application.Current.MainPage.DisplayAlert("Failed", "User wasn't added", "ok");
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Failed", "This username is already in use", "ok");
+                }
             }
         }
 

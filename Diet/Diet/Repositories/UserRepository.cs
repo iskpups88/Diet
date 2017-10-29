@@ -25,6 +25,13 @@ namespace Diet.Models
             return (from i in database.Table<User>() select i).ToList();
 
         }
+
+        public User GetUser(string username)
+        {
+            User user = (User)GetItems().Where(t => t.UserName == username).First();
+            return user;
+        }
+
         public User GetItem(int id)
         {
             return database.Get<User>(id);
@@ -47,26 +54,22 @@ namespace Diet.Models
             }
         }
 
-        public int checkUser(string login, string password)
+        public int CheckUser(string login, string password)
         {
-            IEnumerable<User> users = GetItems();
-            int i = users.Where(t => t.UserName == login & t.Password == password).Count();
+            int i = GetItems().Where(t => t.UserName == login & t.Password == password).Count();
             return i;
         }
 
-
-
-        public bool addUser(User item)
+        public void AddUser(User item)
         {
-            bool added = true;
-            if (checkUser(item.UserName, item.Password) == 0)
+            try
             {
-                database.Insert(item);
-                added = true;
+                database.Insert(item);               
             }
-            else
-                added = false;
-            return added;
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);                
+            }
         }
     }
 }
