@@ -22,6 +22,7 @@ namespace Diet.ViewModels
         public string login;
         public string password;
         public bool isEnabled;
+        public bool isErrorVisible;
 
         public bool IsEnabled
         {
@@ -32,6 +33,22 @@ namespace Diet.ViewModels
                     isEnabled = value;
                     OnPropertyChanged("IsEnabled");
                 } 
+            }
+        }
+
+        public bool IsErrorVisible
+        {
+            get => isErrorVisible;
+            set
+            {
+                if (isErrorVisible != value)
+                {
+                    isErrorVisible = value;
+                    OnPropertyChanged("IsErrorVisible");
+                }
+                //RaisePropertyChanged();
+                //RaisePropertyChanged(() => IsLoginEnabled);
+                //LoginCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -81,10 +98,14 @@ namespace Diet.ViewModels
 
         public void Auth()
         {
-            if (isEnabled == true & UserRepo.CheckUser(login,password) == 1)
+            if (isEnabled == true & UserRepo.CheckUser(login, password) == 1)
+            {
                 Application.Current.MainPage.DisplayAlert("Succes", "You logged", "ok");
+                IsErrorVisible = false;
+            }
             else
-                Application.Current.MainPage.DisplayAlert("Fail", "Check login or password", "ok");
+                IsErrorVisible = true;
+                //Application.Current.MainPage.DisplayAlert("Fail", "Check login or password", "ok");
         }
             
         public bool AuthTest(string a,string b)

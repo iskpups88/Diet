@@ -37,6 +37,7 @@
             <Entry Placeholder="Age" Text="{Binding Age}" Style="{StaticResource entryStyle}"></Entry>
             <Entry Placeholder="Weight" Text="{Binding Weight}" Style="{StaticResource entryStyle}"></Entry>
             <!--<Entry Placeholder="Height" Text="{Binding Height}" Style="{StaticResource entryStyle}"></Entry>-->
+            <Label Text ="This username is already in use!" IsVisible="{Binding IsErrorVisible}" ></Label>
             <Button Text="Registration" Command="{Binding DoRegistration}" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyleReg}"></Button>
         </StackLayout>
     </ContentPage.Content>
