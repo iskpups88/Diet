@@ -15,6 +15,7 @@ namespace Diet.ViewModels
         public UserRepository UserRepo = new UserRepository("localDb");
         public string passwordConfirmation;
         public bool isEnabled;
+        public bool isErrorVisible;
 
         public bool IsEnabled
         {
@@ -26,6 +27,23 @@ namespace Diet.ViewModels
                     isEnabled = value;
                     OnPropertyChanged("IsEnabled");
                 }
+            }
+        }
+
+
+        public bool IsErrorVisible
+        {
+            get => isErrorVisible;
+            set
+            {
+                if (isErrorVisible != value)
+                {
+                    isErrorVisible = value;
+                    OnPropertyChanged("IsErrorVisible");
+                }
+                //RaisePropertyChanged();
+                //RaisePropertyChanged(() => IsLoginEnabled);
+                //LoginCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -87,7 +105,9 @@ namespace Diet.ViewModels
                 }
             }
         }
-    
+
+
+
         public bool Sex
         {
             get => User.Sex;
@@ -138,11 +158,13 @@ namespace Diet.ViewModels
                 try
                 {
                     UserRepo.AddUser(User);
+                    IsErrorVisible = false;
                     await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
                 }
                 catch (Exception)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Failed", "This username is already in use", "ok");
+                    IsErrorVisible = true;
+                    //await Application.Current.MainPage.DisplayAlert("Failed", "This username is already in use", "ok");
                 }
             }
         }
