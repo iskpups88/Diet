@@ -11,7 +11,7 @@ using Xamarin.Forms;
 namespace Diet.ViewModels
 {
     //testIlvir
-    public class MainViewModel : INotifyPropertyChanged
+    public class MenuViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand GetRegistration { get; protected set; }
@@ -78,7 +78,7 @@ namespace Diet.ViewModels
             }
         }
 
-        public MainViewModel(Util.INavigation nav)
+        public MenuViewModel(Util.INavigation nav)
         {
             Navigation = nav;
             GetRegistration = new Command(Registration);
