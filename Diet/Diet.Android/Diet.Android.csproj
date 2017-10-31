@@ -124,8 +124,6 @@
     <Compile Include="Utils\FileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Averta-Bold.ttf" />
-    <Content Include="Assets\Averta-Regular.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
