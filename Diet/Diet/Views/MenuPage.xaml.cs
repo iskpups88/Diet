@@ -15,16 +15,8 @@ namespace Diet.Views
     {
         public MenuPage()
         {
-
-
-           // this.Title = "Sign In";
-
-            this.BackgroundColor = Color.FromHex("#E0E0E0");
-        
             InitializeComponent();
             this.BindingContext = new MenuViewModel(new NamingConventionNavigation(this));
-
-
         }
     }
 }

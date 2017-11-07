@@ -98,9 +98,10 @@ namespace Diet.ViewModels
 
         public void Auth()
         {
-            if (isEnabled == true & UserRepo.CheckUser(login, password) == 1)
+            if (isEnabled == true & UserRepo.CheckUser(login, password))
             {
-                Application.Current.MainPage.DisplayAlert("Succes", "You logged", "ok");
+                //Application.Current.MainPage.DisplayAlert("Succes", "You logged", "ok");
+                Navigation.ShowViewModel(new MainViewModel());
                 IsErrorVisible = false;
             }
             else
