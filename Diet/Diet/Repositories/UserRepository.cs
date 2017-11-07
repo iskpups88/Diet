@@ -54,10 +54,11 @@ namespace Diet.Models
             }
         }
 
-        public int CheckUser(string login, string password)
+        public bool CheckUser(string login, string password)
         {
-            int i = GetItems().Where(t => t.UserName == login & t.Password == password).Count();
-            return i;
+            return (GetItems().Where(t => t.UserName == login & t.Password == password)
+                    .Count()) == 1;
+            
         }
 
         public void AddUser(User item)

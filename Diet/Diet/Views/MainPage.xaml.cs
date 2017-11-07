@@ -15,8 +15,6 @@ namespace Diet
         public MainPage()
         {
             InitializeComponent();
-            //Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(MenuPage)));
-           
         }
 
     }

@@ -15,16 +15,13 @@ namespace Diet
         public App()
         {
             InitializeComponent();
-            MainPage = new Diet.MainPage();
-           // MainPage = new NavigationPage(page);
-
-            
+            var page = new MenuPage();
+            MainPage = new NavigationPage(page);
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
-            
         }
 
         protected override void OnSleep()
@@ -36,7 +33,5 @@ namespace Diet
         {
             // Handle when your app resumes
         }
-
-
     }
 }
