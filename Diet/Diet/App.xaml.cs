@@ -15,7 +15,8 @@ namespace Diet
         public App()
         {
             InitializeComponent();
-            MainPage = new Diet.MainPage();
+            MainPage = new NavigationPage(new MenuPage());
+            //MainPage = new Diet.MainPage();
            // MainPage = new NavigationPage(page);
 
             

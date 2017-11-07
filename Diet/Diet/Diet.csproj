@@ -43,6 +43,7 @@
     <Compile Include="Util\IFileHelper.cs" />
     <Compile Include="Util\INavigation.cs" />
     <Compile Include="Util\NamingConventionNavigation.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">

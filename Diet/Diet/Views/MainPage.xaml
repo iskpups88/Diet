@@ -12,7 +12,7 @@
 
         <NavigationPage>
             <x:Arguments>
-                <local:MenuPage />
+                <local:RegistrationPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

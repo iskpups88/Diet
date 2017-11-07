@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Diet.Models;
+using Diet.Util;
 using Xamarin.Forms;
 
 namespace Diet.ViewModels
@@ -93,7 +94,8 @@ namespace Diet.ViewModels
 
         public void Registration()
         {
-            Navigation.ShowViewModel(new RegistrationViewModel());
+            //Navigation.ShowViewModel(new RegistrationViewModel());
+            Navigation.ShowViewModel(new MainViewModel());
         }
 
         public void Auth()
