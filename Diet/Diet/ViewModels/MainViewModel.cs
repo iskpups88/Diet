@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Diet.Models;
+using Diet.Repositories;
 using Xamarin.Forms;
 
 namespace Diet.ViewModels

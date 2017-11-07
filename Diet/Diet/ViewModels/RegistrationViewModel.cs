@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Diet.Models;
 using Xamarin.Forms;
 using System;
+using Diet.Repositories;
 
 namespace Diet.ViewModels
 {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Diet.Models;
 using SQLite;
 using Xamarin.Forms;
 using Diet.Util;
 
-namespace Diet.Models
+namespace Diet.Repositories
 {
     public class UserRepository
     {
@@ -28,7 +29,7 @@ namespace Diet.Models
 
         public User GetUser(string username)
         {
-            User user = (User)GetItems().Where(t => t.UserName == username).First();
+            User user = (User)GetItems().First(t => t.UserName == username);
             return user;
         }
 
@@ -56,7 +57,7 @@ namespace Diet.Models
 
         public int CheckUser(string login, string password)
         {
-            int i = GetItems().Where(t => t.UserName == login & t.Password == password).Count();
+            int i = GetItems().Count(t => t.UserName == login & t.Password == password);
             return i;
         }
 

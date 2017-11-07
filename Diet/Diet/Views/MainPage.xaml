@@ -18,7 +18,7 @@
     </ContentPage.Resources>
     
     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" WidthRequest="220">
-        <Entry Placeholder="Ilvir Pidr" Text="{Binding Login}" Style="{StaticResource entryStyle}"></Entry>
+        <Entry Placeholder="Username" Text="{Binding Login}" Style="{StaticResource entryStyle}"></Entry>
         <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Style="{StaticResource entryStyle}"></Entry>
         <Label Text ="Check login or password!" IsVisible="{Binding IsErrorVisible}" ></Label>
         <Button Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyleLogin}"></Button>
