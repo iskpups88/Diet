@@ -6,6 +6,7 @@ using Diet.Util;
 using Diet.ViewModels;
 using Xamarin.Forms;
 using INavigation = Xamarin.Forms.INavigation;
+using Diet.Views;
 
 namespace Diet
 {
@@ -13,10 +14,9 @@ namespace Diet
     {
         public App()
         {
-            
             InitializeComponent();
-            var page = new Diet.MainPage();
-            MainPage = new NavigationPage(page);
+            MainPage = new Diet.MainPage();
+           // MainPage = new NavigationPage(page);
 
             
         }
@@ -24,6 +24,7 @@ namespace Diet
         protected override void OnStart()
         {
             // Handle when your app starts
+            
         }
 
         protected override void OnSleep()
@@ -36,6 +37,6 @@ namespace Diet
             // Handle when your app resumes
         }
 
-     
+
     }
 }
