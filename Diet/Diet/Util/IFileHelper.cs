@@ -8,8 +8,6 @@ namespace Diet.Util
 {
     public interface IFileHelper
     {
-        //testIlvir
-        //testIskan
         string GetLocalFilePath(string filename);
     }
 }

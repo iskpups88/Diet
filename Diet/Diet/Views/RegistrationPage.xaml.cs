@@ -16,10 +16,9 @@ namespace Diet.Views
         {
 
             InitializeComponent();
-            this.BindingContext = new RegistrationViewModel();
+           // this.BindingContext = new RegistrationViewModel();
           
         }
-
         public async void OnBackClicked(object sender, EventArgs args) => Navigation.RemovePage(this);
     }
 }

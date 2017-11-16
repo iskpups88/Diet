@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diet.Util
 {
-    public interface INavigation
+    public interface IDependencyResolver
     {
-        void ShowViewModel<T>() where T : class;
+        object GetService(Type serviceType);
+        IEnumerable<object> GetServices(Type serviceType);
     }
 }
