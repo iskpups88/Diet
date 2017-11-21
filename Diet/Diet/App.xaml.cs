@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Diet.Models;
+using Diet.Repositories;
 using Diet.Util;
 using Diet.ViewModels;
 using Xamarin.Forms;
