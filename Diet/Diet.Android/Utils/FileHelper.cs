@@ -12,7 +12,7 @@ using System.IO;
 [assembly: Dependency(typeof(FileHelper))]
 namespace Diet.Droid.Utils
 {
-    public class FileHelper : IFileHelper
+    public class FileHelper
     {
         public string GetLocalFilePath(string filename)
         {

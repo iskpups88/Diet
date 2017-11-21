@@ -4,6 +4,7 @@ using Diet.Models;
 using Xamarin.Forms;
 using System;
 using Diet.Repositories;
+using MvvmCross.Platform;
 
 namespace Diet.ViewModels
 {
@@ -13,7 +14,7 @@ namespace Diet.ViewModels
 
         public User User { get; set; }
         public ICommand DoRegistration { get; set; }
-        public UserRepository UserRepo = new UserRepository("localDb");
+        public IUserRepository UserRepo;
         public string passwordConfirmation;
         public bool isEnabled;
         public bool isErrorVisible;
@@ -50,6 +51,7 @@ namespace Diet.ViewModels
 
         public RegistrationViewModel()
         {
+            UserRepo = Mvx.Resolve<IUserRepository>();
             DoRegistration = new Command(AddUser);
             User = new User();
         }

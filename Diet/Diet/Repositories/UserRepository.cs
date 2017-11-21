@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Diet.Models;
+using Diet.Util;
 using SQLite;
 using Xamarin.Forms;
-using Diet.Util;
 
 namespace Diet.Repositories
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         SQLiteConnection database;
 
         public UserRepository(string filename)
-        {
+        {            
             string databasePath = DependencyService.Get<IFileHelper>().GetLocalFilePath(filename);
             database = new SQLiteConnection(databasePath);
             database.CreateTable<User>();
@@ -29,7 +29,7 @@ namespace Diet.Repositories
 
         public User GetUser(string username)
         {
-            User user = (User)GetItems().First(t => t.UserName == username);
+            User user = GetItems().First(t => t.UserName == username);
             return user;
         }
 
@@ -69,7 +69,7 @@ namespace Diet.Repositories
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);                
+                throw;                
             }
         }
     }
