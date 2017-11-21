@@ -17,5 +17,7 @@ namespace Diet.Views
             InitializeComponent();
         }
 
+
+
     }
 }

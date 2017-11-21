@@ -24,6 +24,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+
+
         <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="220">
             <Entry Placeholder="Username" Text="{Binding UserName}" Style="{StaticResource entryStyle}"></Entry>
             <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" Style="{StaticResource entryStyle}"></Entry>

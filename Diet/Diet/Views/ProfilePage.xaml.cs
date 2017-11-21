@@ -15,6 +15,8 @@ namespace Diet.Views
         public ProfilePage()
         {
             InitializeComponent();
+
+
             this.Navigation.PopAsync(false);
         }
     }

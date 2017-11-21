@@ -17,6 +17,8 @@ namespace Diet.Views
 
         public MasterPage()
         {
+
+
             InitializeComponent();
         }
     }
