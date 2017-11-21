@@ -22,5 +22,7 @@ namespace Diet.Views
             
             this.BindingContext = new MenuViewModel(Mvx.Resolve<INavigation>(), Mvx.Resolve<IUserRepository>());
         }
+
+
     }
 }
