@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Diet.Models;
 using Xamarin.Forms;
 using System;
+using Diet.Util;
+using MvvmCross.Platform;
 
 namespace Diet.ViewModels
 {
@@ -12,7 +14,7 @@ namespace Diet.ViewModels
 
         public User User { get; set; }
         public ICommand DoRegistration { get; set; }
-        public UserRepository UserRepo = new UserRepository("localDb");
+        private IUserRepository Repository;
         public string passwordConfirmation;
         public bool isEnabled;
         public bool isErrorVisible;
@@ -47,9 +49,11 @@ namespace Diet.ViewModels
             }
         }
 
-        public RegistrationViewModel()
+        public RegistrationViewModel(IUserRepository repo)
         {
             DoRegistration = new Command(AddUser);
+            Repository = repo;
+            //Repository = Mvx.Resolve<IUserRepository>();
             User = new User();
         }
 
@@ -67,6 +71,7 @@ namespace Diet.ViewModels
                 }
             }
         }
+
         public string Password
         {
             get => User.Password;
@@ -107,7 +112,6 @@ namespace Diet.ViewModels
         }
 
 
-
         public bool Sex
         {
             get => User.Sex;
@@ -120,6 +124,7 @@ namespace Diet.ViewModels
                 }
             }
         }
+
         public int Weight
         {
             get => User.Weight;
@@ -132,6 +137,7 @@ namespace Diet.ViewModels
                 }
             }
         }
+
         //public int Height
         //{
         //    get => User.Height;
@@ -152,12 +158,11 @@ namespace Diet.ViewModels
 
         public async void AddUser()
         {
-
             if (isEnabled == true)
             {
                 try
                 {
-                    UserRepo.AddUser(User);
+                    Repository.AddUser(User);
                     IsErrorVisible = false;
                     await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
                 }
@@ -171,9 +176,9 @@ namespace Diet.ViewModels
 
         public void CanRegister()
         {
-            IsEnabled =  Age > 14 && Weight > 30 && !string.IsNullOrEmpty(UserName)
-                   && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(PasswordConfirmation) &&
-                   PasswordConfirmation == Password;
+            IsEnabled = Age > 14 && Weight > 30 && !string.IsNullOrEmpty(UserName)
+                        && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(PasswordConfirmation) &&
+                        PasswordConfirmation == Password;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diet.Models
 {
+    //TODO
     public class MasterPageItem
     {
         public string Title { get; set; }

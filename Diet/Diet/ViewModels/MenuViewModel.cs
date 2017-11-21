@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Diet.Models;
+using Diet.Util;
+using MvvmCross.Platform;
 using Xamarin.Forms;
 
 namespace Diet.ViewModels
@@ -17,7 +19,7 @@ namespace Diet.ViewModels
         public ICommand GetRegistration { get; protected set; }
         public ICommand LoginCommand { get; protected set; }
         public Util.INavigation Navigation { get; protected set; }
-        public UserRepository UserRepo = new UserRepository("localDb");
+        private IUserRepository Repository;
 
         public string login;
         public string password;
@@ -78,10 +80,12 @@ namespace Diet.ViewModels
             }
         }
 
-        public MenuViewModel(Util.INavigation nav)
+        public MenuViewModel(Util.INavigation nav, IUserRepository repo)
         {
             Navigation = nav;
-            GetRegistration = new Command(Registration);
+            // Repository = Mvx.Resolve<IUserRepository>();
+            Repository = repo;
+             GetRegistration = new Command(Registration);
             LoginCommand = new Command(Auth);
         }
 
@@ -93,15 +97,16 @@ namespace Diet.ViewModels
 
         public void Registration()
         {
-            Navigation.ShowViewModel(new RegistrationViewModel());
+            Navigation.ShowViewModel<RegistrationViewModel>();
+           
         }
 
         public void Auth()
         {
-            if (isEnabled == true & UserRepo.CheckUser(login, password))
+            if (isEnabled == true & Repository.CheckUser(login, password))
             {
                 //Application.Current.MainPage.DisplayAlert("Succes", "You logged", "ok");
-                Navigation.ShowViewModel(new MainViewModel());
+                Navigation.ShowViewModel<MainViewModel>();
                 IsErrorVisible = false;
             }
             else

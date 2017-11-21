@@ -9,12 +9,13 @@ using Diet.Util;
 
 namespace Diet.Models
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         SQLiteConnection database;
 
-        public UserRepository(string filename)
+        public UserRepository()
         {
+            string filename = "localDb";
             string databasePath = DependencyService.Get<IFileHelper>().GetLocalFilePath(filename);
             database = new SQLiteConnection(databasePath);
             database.CreateTable<User>();

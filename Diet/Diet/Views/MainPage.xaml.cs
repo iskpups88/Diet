@@ -7,7 +7,7 @@ using Diet.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Diet
+namespace Diet.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage

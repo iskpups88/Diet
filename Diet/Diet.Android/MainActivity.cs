@@ -6,6 +6,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Diet.Droid.Utils;
+using Diet.Models;
+using Diet.Util;
+using Ninject;
+using Ninject.Components;
 
 namespace Diet.Droid
 {
@@ -14,6 +19,10 @@ namespace Diet.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+//            IKernel kernel = new StandardKernel();
+//            kernel.Bind<IUserRepository>().To<UserRepository>(); 
+//            kernel.Bind<IFileHelper>().To<FileHelper>();
+//            kernel.Bind<INavigation>().To<NamingConventionNavigation>();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -21,8 +30,6 @@ namespace Diet.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
-
-           
         }
     }
 }
