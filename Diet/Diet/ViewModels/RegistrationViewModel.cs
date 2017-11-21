@@ -14,7 +14,7 @@ namespace Diet.ViewModels
 
         public User User { get; set; }
         public ICommand DoRegistration { get; set; }
-        public IUserRepository UserRepo;
+        public IUserRepository Repository;
         public string passwordConfirmation;
         public bool isEnabled;
         public bool isErrorVisible;
@@ -49,9 +49,10 @@ namespace Diet.ViewModels
             }
         }
 
-        public RegistrationViewModel()
+        public RegistrationViewModel(IUserRepository repo)
         {
-            UserRepo = Mvx.Resolve<IUserRepository>();
+            //Repository = Mvx.Resolve<IUserRepository>();
+            Repository = repo;
             DoRegistration = new Command(AddUser);
             User = new User();
         }
@@ -160,7 +161,7 @@ namespace Diet.ViewModels
             {
                 try
                 {
-                    UserRepo.AddUser(User);
+                    Repository.AddUser(User);
                     IsErrorVisible = false;
                     await Application.Current.MainPage.DisplayAlert("Success", "User added", "ok");
                 }

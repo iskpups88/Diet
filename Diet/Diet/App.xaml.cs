@@ -22,7 +22,14 @@ namespace Diet
             // MainPage = new NavigationPage(page);
 
             MvxSimpleIoCContainer.Initialize();
-            Mvx.RegisterSingleton<IUserRepository>(new UserRepository("localDb"));
+            Mvx.RegisterType<MenuViewModel, MenuViewModel>();
+            Mvx.RegisterType<RegistrationViewModel, RegistrationViewModel>();
+            Mvx.RegisterSingleton<IUserRepository>(new UserRepository());
+            var nav = new NamingConventionNavigation((Page)null);
+            Mvx.RegisterSingleton<Util.INavigation>(nav);
+            var page = new MenuPage();
+            MainPage = new NavigationPage(page);
+            nav.CurrentPage = MainPage;
         }
 
         protected override void OnStart()

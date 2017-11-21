@@ -14,8 +14,9 @@ namespace Diet.Repositories
     {
         SQLiteConnection database;
 
-        public UserRepository(string filename)
-        {            
+        public UserRepository()
+        {
+            string filename = "localDb";
             string databasePath = DependencyService.Get<IFileHelper>().GetLocalFilePath(filename);
             database = new SQLiteConnection(databasePath);
             database.CreateTable<User>();
