@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Diet"
-             x:Class="Diet.Views.MenuPage">
+             x:Class="Diet.Views.MenuPage"
+             Title="Log In"
+             BackgroundColor="#E0E0E0">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,7 +20,7 @@
     </ContentPage.Resources>
 
     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" WidthRequest="220">
-        <Entry Placeholder="Ilvir Pidr" Text="{Binding Login}" Style="{StaticResource entryStyle}"></Entry>
+        <Entry Placeholder="Username" Text="{Binding Login}" Style="{StaticResource entryStyle}"></Entry>
         <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Style="{StaticResource entryStyle}"></Entry>
         <Label Text ="Check login or password!" IsVisible="{Binding IsErrorVisible}" ></Label>
         <Button Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyleLogin}"></Button>

@@ -17,9 +17,9 @@ namespace Diet.Util
             this.CurrentPage = currentPage;
         }
 
-        public async void ShowViewModel<T>() where T : class
-        {
-            string pageName = typeof(T).GetType().FullName.Replace("ViewModels", "Views")
+        public async void ShowViewModel<T>() where  T: class 
+         {
+            string pageName = typeof(T).FullName.Replace("ViewModels", "Views")
                 .Replace("ViewModel", "Page");
             Page page = Activator.CreateInstance(Type.GetType(pageName)) as Page;
             page.BindingContext = Mvx.Resolve<T>();
