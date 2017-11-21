@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MvvmCross.Platform;
 using Xamarin.Forms;
 
 namespace Diet.Util
@@ -16,12 +17,12 @@ namespace Diet.Util
             this.CurrentPage = currentPage;
         }
 
-        public async void ShowViewModel(object viewModel)
-        {
-            string pageName = viewModel.GetType().FullName.Replace("ViewModels", "Views")
+        public async void ShowViewModel<T>() where  T: class 
+         {
+            string pageName = typeof(T).FullName.Replace("ViewModels", "Views")
                 .Replace("ViewModel", "Page");
             Page page = Activator.CreateInstance(Type.GetType(pageName)) as Page;
-            page.BindingContext = viewModel;
+            page.BindingContext = Mvx.Resolve<T>();
             await CurrentPage.Navigation.PushAsync(page);
             CurrentPage = page;
         }
